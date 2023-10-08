@@ -4,12 +4,18 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.Client", "WeatherForecastSystem.Client\WeatherForecastSystem.Client.csproj", "{00FE0693-B404-4AC1-A56A-7E8F91F8BAB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.RedisLogic", "WeatherForecastSystem.RedisLogic\WeatherForecastSystem.RedisLogic.csproj", "{AE505A7E-C41D-48AF-A9C4-F9622D357286}"
+EndProject
 Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{00FE0693-B404-4AC1-A56A-7E8F91F8BAB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{00FE0693-B404-4AC1-A56A-7E8F91F8BAB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00FE0693-B404-4AC1-A56A-7E8F91F8BAB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00FE0693-B404-4AC1-A56A-7E8F91F8BAB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE505A7E-C41D-48AF-A9C4-F9622D357286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE505A7E-C41D-48AF-A9C4-F9622D357286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE505A7E-C41D-48AF-A9C4-F9622D357286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE505A7E-C41D-48AF-A9C4-F9622D357286}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
