@@ -2,14 +2,25 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using WeatherForecastSystem.Client.Data;
 using MudBlazor.Services;
+using WeatherForecastSystem.RedisLogic.Abstraction;
+using WeatherForecastSystem.RedisLogic.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddStackExchangeRedisCache(opt =>
+{
+    opt.Configuration = builder.Configuration.GetConnectionString("Redis");
+    opt.InstanceName = "WeatherForecastSystem/";
+});
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped<IRedisService, RedisService>();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddMudServices();
+
+
 
 var app = builder.Build();
 
