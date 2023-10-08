@@ -1,0 +1,17 @@
+<MudPaper Width="20vw" Height="100vh" Outlined="true" Elevation="2">
+    <MudNavMenu Outlined="true">
+        <div style="padding: 0 1em">
+            <MudTextField T="string"
+                                  Variant="Variant.Outlined"
+                                  AdornmentIcon="@Icons.Material.Filled.Search"
+                                  IconSize="Size.Medium"
+                                  Adornment="Adornment.End"
+                                  FullWidth="false"></MudTextField>
+        </div>
+        <MudDivider Class="my-2"/>
+        @for (int i = 0; i < 10; ++i)
+        {
+            <MudNavLink OnClick="@(() => Navigate(i.ToString()))"> "@($"City_{i}")</MudNavLink>
+        }
+    </MudNavMenu>
+</MudPaper>

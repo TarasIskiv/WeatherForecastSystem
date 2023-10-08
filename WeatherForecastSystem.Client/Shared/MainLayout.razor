@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>WFS</PageTitle>
+
+<MudThemeProvider @ref="@MudThemeProvider" Theme="MudTheme" @bind-IsDarkMode="_isDarkMode"/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+<div class="page">
+
+    <CityNavMenu></CityNavMenu>
+    <main>
+        <MudPaper Elevation="2" Outlined="true" Height="9vh" Width="100%" Square="true">
+            <MudStack Row="true" Justify="Justify.FlexEnd" Style="width: 100%; padding:1em 1em">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@ChangeTheme">Change Theme</MudButton>
+            </MudStack>
+        </MudPaper>
+
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
