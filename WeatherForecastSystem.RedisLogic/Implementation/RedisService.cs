@@ -32,4 +32,9 @@ public class RedisService : IRedisService
     {
         return $"City/{cityName}";
     }
+
+    public string GetCityListKey()
+    {
+        return "CityList";
+    }
 }
