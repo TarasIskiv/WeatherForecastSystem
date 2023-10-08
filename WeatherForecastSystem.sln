@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.Repos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.Core", "WeatherForecastSystem.Core\WeatherForecastSystem.Core.csproj", "{77B9B379-8A45-4C56-9FCE-72C3C4F1D101}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.CityDriver", "WeatherForecastSystem.CityDriver\WeatherForecastSystem.CityDriver.csproj", "{6A347CFC-F698-4D13-B03D-34A793D75BC5}"
+EndProject
 Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{00FE0693-B404-4AC1-A56A-7E8F91F8BAB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{77B9B379-8A45-4C56-9FCE-72C3C4F1D101}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77B9B379-8A45-4C56-9FCE-72C3C4F1D101}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77B9B379-8A45-4C56-9FCE-72C3C4F1D101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A347CFC-F698-4D13-B03D-34A793D75BC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A347CFC-F698-4D13-B03D-34A793D75BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A347CFC-F698-4D13-B03D-34A793D75BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A347CFC-F698-4D13-B03D-34A793D75BC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
