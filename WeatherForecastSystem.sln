@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.Logic", "WeatherForecastSystem.Logic\WeatherForecastSystem.Logic.csproj", "{18F26418-AF75-47F0-A249-6715C9E7204C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.Functions", "WeatherForecastSystem.Functions\WeatherForecastSystem.Functions.csproj", "{09C7B15D-46DF-4148-B5E5-E6FDB9872AD1}"
+EndProject
 Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{00FE0693-B404-4AC1-A56A-7E8F91F8BAB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{18F26418-AF75-47F0-A249-6715C9E7204C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18F26418-AF75-47F0-A249-6715C9E7204C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18F26418-AF75-47F0-A249-6715C9E7204C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C7B15D-46DF-4148-B5E5-E6FDB9872AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C7B15D-46DF-4148-B5E5-E6FDB9872AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C7B15D-46DF-4148-B5E5-E6FDB9872AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C7B15D-46DF-4148-B5E5-E6FDB9872AD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
