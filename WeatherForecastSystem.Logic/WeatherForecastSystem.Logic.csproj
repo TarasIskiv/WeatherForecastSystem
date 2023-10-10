@@ -11,4 +11,9 @@
       <ProjectReference Include="..\WeatherForecastSystem.Repository\WeatherForecastSystem.Repository.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="RestSharp" Version="110.2.1-alpha.0.13" />
+    </ItemGroup>
+
 </Project>
