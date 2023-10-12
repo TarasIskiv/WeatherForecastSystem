@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.Funct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.MediatR", "WeatherForecastSystem.MediatR\WeatherForecastSystem.MediatR.csproj", "{C4BD096F-2E8F-40FE-9A34-686063EBEF66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastSystem.ScrapeDriver", "WeatherForecastSystem.ScrapeDriver\WeatherForecastSystem.ScrapeDriver.csproj", "{63C84ACD-2C7E-41BB-91AB-B4E3DB0D5F9B}"
+EndProject
 Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{00FE0693-B404-4AC1-A56A-7E8F91F8BAB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{C4BD096F-2E8F-40FE-9A34-686063EBEF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4BD096F-2E8F-40FE-9A34-686063EBEF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4BD096F-2E8F-40FE-9A34-686063EBEF66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63C84ACD-2C7E-41BB-91AB-B4E3DB0D5F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C84ACD-2C7E-41BB-91AB-B4E3DB0D5F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C84ACD-2C7E-41BB-91AB-B4E3DB0D5F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63C84ACD-2C7E-41BB-91AB-B4E3DB0D5F9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

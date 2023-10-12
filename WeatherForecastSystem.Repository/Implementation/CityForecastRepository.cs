@@ -21,7 +21,7 @@ public class CityForecastRepository : ICityForecastRepository
         await connection.ExecuteAsync(sql);
     }
 
-    public async Task AddForecastForCity(List<CityForecast> forecasts)
+    public async Task AddForecastForCities(List<CityForecast> forecasts)
     {
         var sql = @"Insert into CityForecast(CityId,ForecastData, Temperature,  Humidity,  WindGust, Precipitation,  Visibility, WindSpeed)
                     Values(@CityId, @ForecastDate, @Temperature,  @Humidity,  @WindGust, @Precipitation,  @Visibility, @WindSpeed)";
