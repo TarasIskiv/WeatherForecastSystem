@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using WeatherForecastSystem.Core.ClientModels;
 using WeatherForecastSystem.Functions.Helpers;
@@ -14,7 +15,7 @@ namespace WeatherForecastSystem.Functions;
 
 public class ProcessCityAction : FunctionBase<ProcessCityAction>
 {
-    public ProcessCityAction(IServiceBusMessagingService _messagingService) : base(_messagingService)
+    public ProcessCityAction(IConfiguration configuration) : base(configuration)
     {
         
     }

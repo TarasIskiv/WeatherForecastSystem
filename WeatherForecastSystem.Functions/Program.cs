@@ -14,12 +14,10 @@ var host = new HostBuilder()
     })
     .ConfigureServices((context, services) =>
     {
-        var client = ServiceBusHelper.GetServiceBusClient(context.Configuration);
-        var sender =  client.GetServiceBusSender(context.Configuration);
-        var receiver = client.GetServiceBusReceiver(context.Configuration);
+        var config = new ServiceBusConfig();
+        context.Configuration.GetSection("ConnectionStrings").Bind(config);
         services
-            .AddLogging()
-            .AddScoped<IServiceBusMessagingService>(opt => new ServiceBusMessagingService(sender, receiver));
+            .AddLogging();
     })
     .UseDefaultServiceProvider(options => options.ValidateScopes = false)
     .Build();

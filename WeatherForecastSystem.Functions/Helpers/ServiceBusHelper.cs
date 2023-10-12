@@ -5,19 +5,19 @@ namespace WeatherForecastSystem.Functions.Helpers;
 
 public static class ServiceBusHelper
 {
-    public static ServiceBusClient GetServiceBusClient(IConfiguration configuration)
+    public static ServiceBusClient GetServiceBusClient(string url)
     {
         var clientOptions = new ServiceBusClientOptions {TransportType = ServiceBusTransportType.AmqpWebSockets};
-        return new ServiceBusClient(configuration.GetConnectionString("ServiceBusURL"),clientOptions);
+        return new ServiceBusClient(url,clientOptions);
     }
 
-    public static ServiceBusReceiver GetServiceBusReceiver(this ServiceBusClient client, IConfiguration configuration)
+    public static ServiceBusReceiver GetServiceBusReceiver(this ServiceBusClient client,string queue)
     {
-        return client.CreateReceiver(configuration.GetConnectionString("ServiceBusCityQueue"));
+        return client.CreateReceiver(queue);
     }
     
-    public static ServiceBusSender GetServiceBusSender(this ServiceBusClient client, IConfiguration configuration)
+    public static ServiceBusSender GetServiceBusSender(this ServiceBusClient client, string queue)
     {
-        return client.CreateSender(configuration.GetConnectionString("ServiceBusCityQueue"));
+        return client.CreateSender(queue);
     }
 }
