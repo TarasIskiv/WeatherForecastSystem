@@ -12,9 +12,9 @@ public class CityForecastService : ICityForecastService
     {
         _cityForecastRepository = cityForecastRepository;
     }
-    public async Task Update(List<CityForecast> forecasts)
+    public async Task Update(List<CityForecast> forecasts, int cityId)
     {
-        await _cityForecastRepository.RemoveForecastForCities();
+        await _cityForecastRepository.RemoveForecastForCity(cityId);
         await _cityForecastRepository.AddForecastForCities(forecasts);
     }
 

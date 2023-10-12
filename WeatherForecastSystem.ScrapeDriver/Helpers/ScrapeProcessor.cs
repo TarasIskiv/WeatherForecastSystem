@@ -29,10 +29,10 @@ public class ScrapeProcessor
     {
         var message = await _serviceBusMessagingService.ReceiveMessage<string>();
         var cities = await _cityService.GetCities();
-        cities.ForEach(async city =>
+        foreach (var city in cities)
         {
             await SingleAction(city);
-        });
+        }
     }
 
     private async Task SingleAction(City city)
@@ -40,7 +40,7 @@ public class ScrapeProcessor
         var forecasts = await Scrape(city.CityName);
         if(forecasts is null || !forecasts.Any()) return;
         var cityForecasts = forecasts.ToCityForecastList(city.CityId);
-        await UpdateForecasts(cityForecasts);
+        await UpdateForecasts(cityForecasts, city.CityId);
         var key = _redisService.GetKey(city.CityName);
         await _redisService.SetData<List<CityForecast>>(key, cityForecasts);
     }
@@ -49,8 +49,8 @@ public class ScrapeProcessor
         return await _forecastService.GetForecast(cityName);
     }
 
-    private async Task UpdateForecasts(List<CityForecast> forecasts)
+    private async Task UpdateForecasts(List<CityForecast> forecasts, int cityId)
     {
-        await _cityForecastService.Update(forecasts);
+        await _cityForecastService.Update(forecasts, cityId);
     }
 }

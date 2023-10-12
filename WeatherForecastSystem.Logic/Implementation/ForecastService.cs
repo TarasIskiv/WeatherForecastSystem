@@ -28,20 +28,22 @@ public class ForecastService : IForecastService
     private List<Forecast> ParseContent(string input)
     {
         var forecastList = new List<Forecast>();
-        dynamic jsonObject = JsonConvert.DeserializeObject(input);
+        dynamic data = JsonConvert.DeserializeObject(input);
 
-        foreach (var daily in jsonObject?.daily)
+        if (data.timelines != null && data.timelines.daily != null)
         {
-            var date = daily?.time ?? DateTime.MinValue;
-            var temperatureAvg = daily?.values?.temperatureAvg ?? 0.0f;
-            var humidityAvg = daily?.values?.humidityAvg ?? 0.0f;
-            var windGustAvg = daily?.values?.windGustAvg ?? 0.0f;
-            var precipitationProbabilityAvg = daily?.values?.precipitationProbabilityAvg ?? 0.0f;
-            var visibilityAvg = daily?.values?.visibilityAvg ?? 0.0f;
-            var windSpeedAvg = daily?.values?.windSpeedAvg ?? 0.0f;
+            foreach (var daily in data.timelines.daily)
+            {
+                DateTime date = DateTime.Parse(daily.time.ToString());
+                float temperatureAvg = (float)daily.values.temperatureAvg;
+                float humidityAvg = (float)daily.values.humidityAvg;
+                float windGustAvg = (float)daily.values.windGustAvg;
+                float precipitationProbabilityAvg = (float)daily.values.precipitationProbabilityAvg;
+                float visibilityAvg = (float)daily.values.visibilityAvg;
+                float windSpeedAvg = (float)daily.values.windSpeedAvg;
 
-            var forecast = new Forecast(date, temperatureAvg, humidityAvg, windGustAvg, precipitationProbabilityAvg, visibilityAvg, windSpeedAvg);
-            forecastList.Add(forecast);
+                forecastList.Add(new Forecast(date, temperatureAvg, humidityAvg, windGustAvg, precipitationProbabilityAvg, visibilityAvg, windSpeedAvg));
+            }
         }
 
         return forecastList;

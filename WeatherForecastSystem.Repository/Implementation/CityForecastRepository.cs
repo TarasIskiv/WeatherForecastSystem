@@ -13,17 +13,17 @@ public class CityForecastRepository : ICityForecastRepository
     {
         _context = context;
     }
-    public async Task RemoveForecastForCities()
+    public async Task RemoveForecastForCity(int cityId)
     {
-        string sql = @"Delete * from CityForecast";
+        string sql = @"delete from CityForecast where CityId = @Id";
         using var connection = _context.CreateConnection();
         connection.Open();
-        await connection.ExecuteAsync(sql);
+        await connection.ExecuteAsync(sql, new {Id = cityId});
     }
 
     public async Task AddForecastForCities(List<CityForecast> forecasts)
     {
-        var sql = @"Insert into CityForecast(CityId,ForecastData, Temperature,  Humidity,  WindGust, Precipitation,  Visibility, WindSpeed)
+        var sql = @"Insert into CityForecast(CityId,ForecastDate, Temperature,  Humidity,  WindGust, Precipitation,  Visibility, WindSpeed)
                     Values(@CityId, @ForecastDate, @Temperature,  @Humidity,  @WindGust, @Precipitation,  @Visibility, @WindSpeed)";
 
         var anonymousForecasts = new List<object>();

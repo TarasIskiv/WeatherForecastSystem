@@ -51,10 +51,19 @@ public class CityRepository : ICityRepository
 
     public async Task<List<City>> GetCities()
     {
-        var sql = @"Select CityId, CityName, IsInUse from Citites";
-        using var connection = _context.CreateConnection();
-        connection.Open();
-        var cities = await connection.QueryAsync<City>(sql);
-        return cities.ToList();
+        try
+        {
+            var sql = @"Select CityId, CityName, IsInUse from Cities";
+            using var connection = _context.CreateConnection();
+            connection.Open();
+            var cities = await connection.QueryAsync<City>(sql);
+            return cities.ToList();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
+        
     }
 }

@@ -7,6 +7,7 @@ using WeatherForecastSystem.Logic.Implementation;
 using WeatherForecastSystem.RedisLogic.Abstraction;
 using WeatherForecastSystem.RedisLogic.Implementation;
 using WeatherForecastSystem.Repository.Abstraction;
+using WeatherForecastSystem.Repository.Implementation;
 using WeatherForecastSystem.ServiceBusLogic.Abstraction;
 using WeatherForecastSystem.ServiceBusLogic.Implementation;
 
@@ -24,18 +25,21 @@ public static class ScrapeDriverHepler
         var timesteps = config.GetConnectionString("timesteps");
         var apikey = config.GetConnectionString("apikey");
         collection
+            .AddSingleton<IConfiguration>(config)
             .AddSingleton<DapperContext>()
             .AddTransient<IServiceBusMessagingService>(service => new ServiceBusMessagingService(sender, receiver))
             .AddScoped<IRedisService, RedisService>()
             .AddScoped<IForecastService>(opt => new ForecastService(timesteps!, apikey!))
             .AddScoped<ICityService, CityService>()
+            .AddScoped<ICityRepository, CityRepository>()
             .AddScoped<ICityForecastService, CityForecastService>()
-            .AddScoped<ICityForecastRepository, ICityForecastRepository>();
+            .AddScoped<ICityForecastRepository, CityForecastRepository>();
     }
 
     private static ServiceBusClient GetServiceBusClient(IConfiguration configuration)
     {
         var clientOptions = new ServiceBusClientOptions {TransportType = ServiceBusTransportType.AmqpWebSockets};
+        var a = configuration.GetConnectionString("ServiceBusURL");
         return new ServiceBusClient(configuration.GetConnectionString("ServiceBusURL"),clientOptions);
     }
 
