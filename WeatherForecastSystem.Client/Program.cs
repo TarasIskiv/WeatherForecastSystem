@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using WeatherForecastSystem.Client.Data;
 using MudBlazor.Services;
+using WeatherForecastSystem.ClientLogic.Abstraction;
+using WeatherForecastSystem.ClientLogic.Implementation;
 using WeatherForecastSystem.RedisLogic.Abstraction;
 using WeatherForecastSystem.RedisLogic.Implementation;
 
@@ -17,10 +19,9 @@ builder.Services.AddStackExchangeRedisCache(opt =>
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<IRedisService, RedisService>();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<ICityForecastService, CityForecastService>();
 builder.Services.AddMudServices();
-
-
 
 var app = builder.Build();
 

@@ -13,6 +13,8 @@
       <PackageReference Include="MudBlazor" Version="6.10.0" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\WeatherForecastSystem.ClientLogic\WeatherForecastSystem.ClientLogic.csproj" />
+      <ProjectReference Include="..\WeatherForecastSystem.MediatR\WeatherForecastSystem.MediatR.csproj" />
       <ProjectReference Include="..\WeatherForecastSystem.RedisLogic\WeatherForecastSystem.RedisLogic.csproj" />
     </ItemGroup>
 
