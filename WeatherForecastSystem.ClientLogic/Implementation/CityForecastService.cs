@@ -1,14 +1,15 @@
 using WeatherForecastSystem.ClientLogic.Abstraction;
 using WeatherForecastSystem.Core.ClientModels;
+using WeatherForecastSystem.RedisLogic.Abstraction;
 using WeatherForecastSystem.RedisLogic.Implementation;
 
 namespace WeatherForecastSystem.ClientLogic.Implementation;
 
 public class CityForecastService : ICityForecastService
 {
-    private readonly RedisService _redisService;
+    private readonly IRedisService _redisService;
 
-    public CityForecastService(RedisService redisService)
+    public CityForecastService(IRedisService redisService)
     {
         _redisService = redisService;
     }

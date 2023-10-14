@@ -2,16 +2,20 @@
     <MudNavMenu Outlined="true">
         <div style="padding: 0 1em">
             <MudTextField T="string"
-                                  Variant="Variant.Outlined"
-                                  AdornmentIcon="@Icons.Material.Filled.Search"
-                                  IconSize="Size.Medium"
-                                  Adornment="Adornment.End"
-                                  FullWidth="false"></MudTextField>
+                          @bind-Value="Search"
+                          Immediate="true"
+                          DebounceInterval="100"
+                          OnDebounceIntervalElapsed="ApplyFilter"
+                          Variant="Variant.Outlined"
+                          AdornmentIcon="@Icons.Material.Filled.Search"
+                          IconSize="Size.Medium"
+                          Adornment="Adornment.End"
+                          FullWidth="false"></MudTextField>
         </div>
         <MudDivider Class="my-2"/>
-        @for (int i = 0; i < 10; ++i)
+        @foreach (var city in UserCities)
         {
-            <MudNavLink OnClick="@(() => Navigate(i.ToString()))"> "@($"City_{i}")</MudNavLink>
+            <MudNavLink OnClick="@(() => Navigate(city.CityName))"> @city.CityName.ToUpper()</MudNavLink>
         }
     </MudNavMenu>
 </MudPaper>

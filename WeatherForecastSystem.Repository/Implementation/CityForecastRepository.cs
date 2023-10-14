@@ -51,6 +51,7 @@ public class CityForecastRepository : ICityForecastRepository
         var sql = @"Select 
                         CityForecastId,
                         CityId,
+                        CityName
                         ForecastData,
                         Temperature,  
                         Humidity,  
@@ -58,7 +59,7 @@ public class CityForecastRepository : ICityForecastRepository
                         Precipitation,  
                         Visibility,
                         WindSpeed
-                    from CityForecast where CityId = @Id";
+                    from vwCityForecast where CityId = @Id";
         using var connection = _context.CreateConnection();
         connection.Open();
         var forecasts = await connection.QueryAsync<CityForecast>(sql, new {Id = cityId});

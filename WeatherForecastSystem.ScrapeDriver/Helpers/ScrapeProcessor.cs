@@ -33,6 +33,8 @@ public class ScrapeProcessor
         {
             await SingleAction(city);
         }
+        var key = _redisService.GetCityListKey();
+        await _redisService.SetData(key, cities);
     }
 
     private async Task SingleAction(City city)
