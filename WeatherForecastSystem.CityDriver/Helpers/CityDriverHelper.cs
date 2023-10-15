@@ -24,6 +24,7 @@ public static class CityDriverHelper
         var receiver = client.GetServiceBusReceiver(config);
         var sender = client.GetServiceBusSender(config);
         collection
+            .AddSingleton<IConfiguration>(config)
             .AddSingleton<DapperContext>()
             .AddTransient<IServiceBusMessagingService>(service => new ServiceBusMessagingService(sender, receiver))
             .AddScoped<IRedisService, RedisService>()

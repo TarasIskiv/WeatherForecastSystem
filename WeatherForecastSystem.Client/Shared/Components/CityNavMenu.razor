@@ -1,7 +1,8 @@
-<MudPaper Width="20vw" Height="100vh" Outlined="true" Elevation="2">
+<MudPaper Width="30vw" Height="100vh" Outlined="true" Elevation="2">
     <MudNavMenu Outlined="true">
         <div style="padding: 0 1em">
             <MudTextField T="string"
+                          ReadOnly="IsInEditMode"
                           @bind-Value="Search"
                           Immediate="true"
                           DebounceInterval="100"
@@ -13,9 +14,34 @@
                           FullWidth="false"></MudTextField>
         </div>
         <MudDivider Class="my-2"/>
-        @foreach (var city in UserCities)
-        {
-            <MudNavLink OnClick="@(() => Navigate(city.CityName))"> @city.CityName.ToUpper()</MudNavLink>
-        }
+        <MudStack>
+            @foreach (var city in UserCities)
+                    {
+                        <MudPaper Height="8vh" Width="100%" Style="padding:0 5px">
+                            <MudStack Style="width:100%;height: 100%" Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
+                                @if (IsInEditMode && IsCityInEditMode(city))
+                                {
+                                    <MudTextField @bind-Value="UpdateCityName" T="string"></MudTextField>
+                                    <div>
+                                        <MudIconButton Color="Color.Error" OnClick="@(() => FinishUpdating(false))" Icon="@Icons.Material.Filled.Cancel"></MudIconButton>
+                                        <MudIconButton Color="Color.Success" OnClick="@(() => FinishUpdating(true))" Icon="@Icons.Material.Filled.Save"></MudIconButton>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <MudButton Disabled="IsInEditMode" Color="Color.Primary" Variant="Variant.Text" OnClick="@(() => Navigate(city.CityName))">@city.CityName</MudButton>
+                                    <div>
+                                        <MudIconButton Disabled="IsInEditMode" Color="Color.Warning" OnClick="@(() => StartUpdate(city))" Icon="@Icons.Material.Filled.Edit"></MudIconButton>
+                                        <MudIconButton Disabled="IsInEditMode" Color="Color.Error" Icon="@Icons.Material.Filled.Delete"></MudIconButton>
+                                    </div>
+                                }
+                            </MudStack>
+                        </MudPaper>
+                    }
+            
+        </MudStack>
+        <MudStack AlignItems="AlignItems.Center" Justify="Justify.FlexEnd" Style="width: 100%; height: 9vh">
+            <MudButton Color="Color.Success" Disabled="IsInEditMode" Variant="Variant.Filled" OnClick="@AddCity">Add City</MudButton>
+        </MudStack>
     </MudNavMenu>
 </MudPaper>

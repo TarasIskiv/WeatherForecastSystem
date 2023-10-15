@@ -6,7 +6,7 @@ using WeatherForecastSystem.ServiceBusLogic.Abstraction;
 
 var collection = new ServiceCollection();
 collection.AddDependencyInjections();
-using var provider = collection.BuildServiceProvider();
+var provider = collection.BuildServiceProvider();
 
 try
 {
