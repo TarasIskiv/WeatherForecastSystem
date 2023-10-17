@@ -1,4 +1,5 @@
 using Dapper;
+using WeatherForecastSystem.Core.ClientModels;
 using WeatherForecastSystem.Core.Models;
 using WeatherForecastSystem.Database;
 using WeatherForecastSystem.Repository.Abstraction;
@@ -46,23 +47,23 @@ public class CityForecastRepository : ICityForecastRepository
         await connection.ExecuteAsync(sql, anonymousForecasts);
     }
 
-    public async Task<List<CityForecast>> GetForecastsForCity(int cityId)
+    public async Task<List<CityForecastClient>> GetForecastsForCity(int cityId)
     {
-        var sql = @"Select 
+        var sql = @"Select
                         CityForecastId,
                         CityId,
-                        CityName
-                        ForecastData,
-                        Temperature,  
-                        Humidity,  
-                        WindGust, 
-                        Precipitation,  
-                        Visibility,
-                        WindSpeed
+                        CityName,
+                        ForecastDate,
+                        Round(Temperature, 2) Temperature,
+                        Round(Humidity, 2) Humidity,
+                        Round(WindGust, 2) WindGust,
+                        Round(Precipitation, 2) Precipitation,
+                        Round(Visibility, 2) Visibility,
+                        Round(WindSpeed, 2) WindSpeed
                     from vwCityForecast where CityId = @Id";
         using var connection = _context.CreateConnection();
         connection.Open();
-        var forecasts = await connection.QueryAsync<CityForecast>(sql, new {Id = cityId});
+        var forecasts = await connection.QueryAsync<CityForecastClient>(sql, new {Id = cityId});
         return forecasts.ToList();
     }
 }

@@ -1,6 +1,7 @@
 @page "/"
 @page "/forecast/{City}"
 @using WeatherForecastSystem.Core.Enums
+@using WeatherForecastSystem.Core.Models
 
 <MudPaper Elevation="0" Outlined="false" Height="90vh" Width="80vw" Style="background-color: transparent;">
     @if (string.IsNullOrEmpty(City))
@@ -11,13 +12,13 @@
     }
     else
     {
-        <MudText>Selected City @City</MudText>
+        <MudText Align="Align.Start" Typo="Typo.h5">@City</MudText>
         <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" Color="Color.Primary" PanelClass="pa-6">
             @foreach (ForecastType type in Enum.GetValues(typeof(ForecastType)))
             {
                 <MudTabPanel Text="@type.ToString()">
-                    <MudText>Content One</MudText>
-                </MudTabPanel>
+                    <ChartComponent @ref="_chart" Cities="@GetCities()" Type="@type"></ChartComponent>
+                </MudTabPanel> 
             }
         </MudTabs>
     }

@@ -14,7 +14,7 @@ public class ScrapeForecast : FunctionBase<ScrapeForecast>
     {
     }
     [Function("ScrapeForecast")]
-    public async Task Run([TimerTrigger("0 0 1 * * *")] TimerInfo myTimer, FunctionContext context)
+    public async Task Run([TimerTrigger("0 0 1 * * *", RunOnStartup = true)] TimerInfo myTimer, FunctionContext context)
     {
         await _messagingScrapeService.SendMessage("Scrape");
     }

@@ -43,8 +43,9 @@ public class ScrapeProcessor
         if(forecasts is null || !forecasts.Any()) return;
         var cityForecasts = forecasts.ToCityForecastList(city.CityId);
         await UpdateForecasts(cityForecasts, city.CityId);
+        var dbForecasts = await _cityForecastService.GetCityForecast(city.CityId);
         var key = _redisService.GetKey(city.CityName);
-        await _redisService.SetData<List<CityForecast>>(key, cityForecasts);
+        await _redisService.SetData(key, dbForecasts);
     }
     private async Task<List<Forecast>> Scrape(string cityName)
     {

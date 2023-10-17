@@ -1,3 +1,4 @@
+using WeatherForecastSystem.Core.ClientModels;
 using WeatherForecastSystem.Core.Models;
 using WeatherForecastSystem.Logic.Abstraction;
 using WeatherForecastSystem.Repository.Abstraction;
@@ -18,7 +19,7 @@ public class CityForecastService : ICityForecastService
         await _cityForecastRepository.AddForecastForCities(forecasts);
     }
 
-    public async Task<List<CityForecast>> GetCityForecast(int cityId)
+    public async Task<List<CityForecastClient>> GetCityForecast(int cityId)
     {
         return await _cityForecastRepository.GetForecastsForCity(cityId);
     }
