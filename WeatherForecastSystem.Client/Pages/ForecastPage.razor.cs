@@ -11,21 +11,45 @@ partial class ForecastPage
 {
     [Parameter, AllowNull] public string City { get; set; }
     [Inject] private ICityForecastService CityForecastService { get; set; } = default!;
+    [Inject] private ICityService CityService { get; set; } = default!;
     public List<CityForecastClient> Forecasts { get; set; } = new();
-    [AllowNull] private ChartComponent _chart = new ChartComponent(); 
+    [AllowNull] private ChartComponent _chart = new ChartComponent();
+    public bool Compare { get; set; } = false;
+    public List<string> AvailableCities { get; set; } = new();
+    private string value { get; set; } = "Nothing selected";
+    private IEnumerable<string> _selectedCities { get; set; } = new HashSet<string>() {};
+
     protected override async Task OnParametersSetAsync()
     {
         if(string.IsNullOrEmpty(City)) return;
+
+        _selectedCities = new HashSet<string>() { City };
         
-         _chart.Dispose();
-        await LoadForecast();
+        _chart.Dispose();
+        await LoadCities();
         StateHasChanged();
     }
 
-    private async Task LoadForecast()
+    public async Task LoadCities()
     {
-       Forecasts = await CityForecastService.GetCityForecast(City);
+        var cities = await CityService.GetCities();
+        AvailableCities = cities
+                            .Where(x => !x.CityName.Equals(City))
+                            .Select(x => x.CityName)
+                            .ToList();
     }
 
     public List<string> GetCities() => new List<string>() {City};
+    
+    private string GetMultiSelectionText(List<string> selectedValues)
+    {
+        return $"{selectedValues.Count} cit{(selectedValues.Count > 1 ? "ies have":"y has")} been selected";
+    }
+
+    private void UpdateChart()
+    {
+        _chart.Dispose();
+        StateHasChanged();
+    }
+
 }

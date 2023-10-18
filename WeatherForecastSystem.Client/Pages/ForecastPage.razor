@@ -12,12 +12,30 @@
     }
     else
     {
-        <MudText Align="Align.Start" Typo="Typo.h5">@City</MudText>
+        <MudStack Row="true" Justify="Justify.SpaceBetween" Style="width: 100%" AlignItems="AlignItems.Center">
+            <MudText Typo="Typo.h6">@City</MudText>
+            <MudCheckBox T="bool" @bind-Checked="@Compare" Label="Compare" LabelPosition="LabelPosition.End"></MudCheckBox>
+            <div style="width: 25%">
+                <MudSelect MultiSelection="true"
+                                       Disabled="@(!Compare)"
+                                       T="string"
+                                       Label="Cities"
+                                       ValueChanged="@UpdateChart"
+                                       MultiSelectionTextFunc="@(new Func<List<string>, string>(GetMultiSelectionText))"
+                                       @bind-SelectedValues="_selectedCities"
+                                       >
+                                @foreach (var city in AvailableCities)
+                                {
+                                    <MudSelectItem T="string" Value="@city">@city.ToUpper()</MudSelectItem>
+                                }
+                            </MudSelect>   
+            </div>
+        </MudStack>
         <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" Color="Color.Primary" PanelClass="pa-6">
             @foreach (ForecastType type in Enum.GetValues(typeof(ForecastType)))
             {
                 <MudTabPanel Text="@type.ToString()">
-                    <ChartComponent @ref="_chart" Cities="@GetCities()" Type="@type"></ChartComponent>
+                    <ChartComponent @ref="_chart" Cities="@_selectedCities.ToList()" Type="@type"></ChartComponent>
                 </MudTabPanel> 
             }
         </MudTabs>

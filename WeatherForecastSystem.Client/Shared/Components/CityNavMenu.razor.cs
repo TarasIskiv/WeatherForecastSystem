@@ -72,7 +72,10 @@ partial class CityNavMenu
         IsInEditMode = false;
         SelectedCityAction.SelectedCity = null;
         if (isSuccess)
+        {
             await LoadCities();
+            ApplyFilter();
+        }
     }
 
     public bool IsCityInEditMode(City city)
@@ -91,7 +94,11 @@ partial class CityNavMenu
     {
         var cityAction = new CityAction() { SelectedCity = city, Action = ActionType.Delete };
         var isSuccess = await Mediator.Send(new CityActionRequest(SelectedCityAction));
-        if (isSuccess) await LoadCities(); 
+        if (isSuccess) 
+        {
+            await LoadCities();
+            ApplyFilter();
+        }
         StateHasChanged();
     }
 
