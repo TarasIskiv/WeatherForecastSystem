@@ -263,3 +263,4 @@ FakesAssemblies/
 *.opt
 WeatherForecastSystem.CityDriver/appsettings.json
 WeatherForecastSystem.CityDriver/appsettings.json
+WeatherForecastSystem.ScrapeDriver/appsettings.json
