@@ -16,4 +16,5 @@ Also, the user can compare forecasts, because, there is an ability to display mu
 
 The project architecture is located below. 
 
-![WeatherForecastSystem](https://github.com/TarasIskiv/WeatherForecastSystem/assets/66842006/15fd79ab-1fb1-48cb-b858-703b292d6d45)
+
+<img src="https://github.com/TarasIskiv/WeatherForecastSystem/assets/66842006/2df72274-a532-4862-aa2d-40fb67a4c362" alt="mudblazor" width="800" height="700"/> 
